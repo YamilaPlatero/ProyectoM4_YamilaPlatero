@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home, Contacto, Login, Register, Tareas } from '../pages';
+import { Home, Contacto, Tareas } from '../pages';
+import { Login, Register } from '../pages';
 import { ProtectedRoute } from './ProtectedRoute';
 
 export const AppRoutes: React.FC = () => {

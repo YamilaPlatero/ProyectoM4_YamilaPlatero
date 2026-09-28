@@ -50,18 +50,7 @@ export const App: React.FC = () => {
             </div>
           ) : (
             <div className="nav-auth-links">
-              <Link
-                to="/login"
-                className={`nav-link ${location.pathname === '/login' ? 'active' : ''}`}
-              >
-                Login
-              </Link>
-              <Link
-                to="/register"
-                className={`nav-link ${location.pathname === '/register' ? 'active' : ''}`}
-              >
-                Register
-              </Link>
+
             </div>
           )}
         </div>
