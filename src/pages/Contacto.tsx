@@ -28,9 +28,9 @@ export const Contacto: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nombre: nombre.trim(),
-          correo: correo.trim(),
-          msj: msj.trim(),
+          to: nombre.trim(),
+          subjet: correo.trim(),
+          body: msj.trim(),
         }),
       });
 
