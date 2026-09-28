@@ -4,9 +4,9 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 
 interface EmailRequestBody {
-  to: string;
-  subject: string;
-  body: string;
+  nombre: string;
+  correo: string;
+  msj: string;
 }
 
 function isValidEmail(value: string): boolean {
@@ -24,20 +24,20 @@ export default async function handler(
     return;
   }
 
-  const { to, subject, body } = req.body as EmailRequestBody;
+  const { nombre, correo, msj } = req.body as EmailRequestBody;
 
-  if (!to || !subject || !body) {
-    res.status(400).json({ error: 'Missing required fields (to, subject, body)' });
+  if (!nombre || !correo || !msj) {
+    res.status(400).json({ error: 'No se encuentra (nombre, correo, msj)' });
     return;
   }
 
-  if (!isValidEmail(to)) {
+  if (!isValidEmail(nombre)) {
     res.status(400).json({ error: 'El correo no es valido' });
     return;
   }
 
   const fromEmail = process.env.AWS_SES_FROM_EMAIL;
-  const toEmail = process.env.AWS_SES_TO_EMAIL || to;
+  const toEmail = process.env.AWS_SES_TO_EMAIL || nombre;
 
   try {
 
@@ -53,8 +53,8 @@ export default async function handler(
       Source: fromEmail,
       Destination: { ToAddresses: [toEmail] },
       Message: {
-        Subject: { Data: subject },
-        Body: { Text: { Data: body } },
+        correo: { Data: correo },
+        msj: { Text: { Data: msj } },
       },
     });
 
@@ -62,7 +62,7 @@ export default async function handler(
 
     res.status(200).json({
       success: true,
-      message: `Email enviado exitosamente a ${to}`,
+      message: `Email enviado exitosamente a ${nombre}`,
     });
     return;
   } catch (error: any) {
