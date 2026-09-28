@@ -53,8 +53,8 @@ export default async function handler(
       Source: fromEmail,
       Destination: { ToAddresses: [toEmail] },
       Message: {
-        correo: { Data: correo },
-        msj: { Text: { Data: msj } },
+        Subject: { Data: correo },
+        Body: { Text: { Data: msj } },
       },
     });
 
