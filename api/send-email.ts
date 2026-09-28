@@ -9,11 +9,6 @@ interface EmailRequestBody {
   body: string;
 }
 
-const normalizeTo = (to: string) => to.trim();
-const normalizeSubject = (subject: string) => subject.trim();
-const normalizeBody = (body: string) => body.trim();
-
-
 function isValidEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
@@ -41,7 +36,6 @@ export default async function handler(
     return;
   }
 
-  const region = process.env.AWS_REGION || "us-east-1";
   const fromEmail = process.env.AWS_SES_FROM_EMAIL;
   const toEmail = process.env.AWS_SES_TO_EMAIL || to;
 
