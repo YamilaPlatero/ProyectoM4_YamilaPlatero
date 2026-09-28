@@ -41,8 +41,10 @@ export default async function handler(
 
   try {
 
+    const region = process.env.AWS_REGION?.trim() || "us-east-1";
+
     const sesClient = new SESClient({
-      region: process.env.AWS_REGION || "us-east-1",
+      region,
       credentials: {
         accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
