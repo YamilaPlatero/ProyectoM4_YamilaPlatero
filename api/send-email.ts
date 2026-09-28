@@ -31,7 +31,7 @@ export default async function handler(
     return;
   }
 
-  if (!isValidEmail(nombre)) {
+  if (!isValidEmail(correo)) {
     res.status(400).json({ error: 'El correo no es valido' });
     return;
   }
