@@ -10,6 +10,8 @@ export const Register: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleGoogleRegister = async () => {
     try {
@@ -63,19 +65,39 @@ export const Register: React.FC = () => {
           required
         />
         <input
-          type="password"
-          placeholder="Contraseña"
+          type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          placeholder="Contraseña"
         />
+
+        <button
+          type="button"
+          className="password-toggle"
+          onClick={() => setShowPassword(!showPassword)}
+          aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+        >
+          {showPassword ? "🙈" : "👁️"}
+        </button>
         <input
-          type="password"
-          placeholder="Confirmar Contraseña"
+          type={showConfirmPassword ? "text" : "password"}
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          required
+          placeholder="Confirmar contraseña"
         />
+
+        <button
+          type="button"
+          className="password-toggle"
+          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+          aria-label={
+            showConfirmPassword
+              ? "Ocultar confirmación de contraseña"
+              : "Mostrar confirmación de contraseña"
+          }
+        >
+          {showConfirmPassword ? "🙈" : "👁️"}
+        </button>
         <button type="submit">Registrarse</button>
       </form>
       <p style={{ marginTop: '1rem', textAlign: 'center', color: 'var(--text-muted)' }}>

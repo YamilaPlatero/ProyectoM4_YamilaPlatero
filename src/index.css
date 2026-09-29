@@ -67,7 +67,8 @@ body {
   border-radius: 12px;
 }
 
-.nav-links, .nav-auth-links {
+.nav-links,
+.nav-auth-links {
   display: flex;
   gap: 0.75rem;
   align-items: center;
@@ -132,7 +133,10 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.auth-page h2, .contacto-header h2, .home-hero h2, .tareas-header h2 {
+.auth-page h2,
+.contacto-header h2,
+.home-hero h2,
+.tareas-header h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: var(--text-main);
@@ -152,7 +156,9 @@ body {
   margin-bottom: 0.35rem;
 }
 
-input, textarea, button {
+input,
+textarea,
+button {
   width: 100%;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
@@ -165,7 +171,8 @@ input, textarea, button {
   transition: border-color 0.2s;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
@@ -222,7 +229,8 @@ button:disabled {
 }
 
 /* Alerts */
-.alert, .alert-error {
+.alert,
+.alert-error {
   padding: 0.75rem 1rem;
   border-radius: 8px;
   margin-bottom: 1.25rem;
@@ -237,7 +245,8 @@ button:disabled {
   color: #86efac;
 }
 
-.alert-danger, .alert-error {
+.alert-danger,
+.alert-error {
   background-color: var(--danger-bg);
   border: 1px solid var(--danger);
   color: #fca5a5;
@@ -260,7 +269,8 @@ button:disabled {
   font-size: 1.05rem;
 }
 
-.home-user-welcome, .home-auth-actions {
+.home-user-welcome,
+.home-auth-actions {
   text-align: center;
   background: #0f172a;
   padding: 1.25rem;
@@ -424,4 +434,25 @@ button:disabled {
   width: auto;
   margin-bottom: 0;
   cursor: pointer;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.password-toggle {
+  width: 45%;
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.password-toggle:hover {
+  background-color: transparent !important;
 }

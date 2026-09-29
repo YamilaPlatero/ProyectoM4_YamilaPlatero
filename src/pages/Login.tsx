@@ -9,6 +9,7 @@ export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,12 +55,20 @@ export const Login: React.FC = () => {
           required
         />
         <input
-          type="password"
-          placeholder="Contraseña"
+          type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          placeholder="Contraseña"
         />
+
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="password-toggle"
+        >
+          {showPassword ? "🙈" : "👁️"}
+        </button>
+
         <button type="submit">Ingresar</button>
       </form>
       <p style={{ marginTop: '1rem', textAlign: 'center', color: 'var(--text-muted)' }}>

@@ -113,7 +113,7 @@ export const Contacto: React.FC = () => {
         </div>
 
         <button type="submit" disabled={loading} className="btn-submit">
-          {loading ? 'Enviando correo...' : 'Enviar Mensaje'}
+          {loading ? 'Enviando correo...' : 'Enviar Mensaje ✉️'}
         </button>
       </form>
 

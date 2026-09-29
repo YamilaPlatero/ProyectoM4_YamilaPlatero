@@ -20,7 +20,7 @@ export const Home: React.FC = () => {
             Has iniciado sesión como <strong>{user.email}</strong>.
           </p>
           <Link to="/tareas" className="btn-primary-link">
-            Ir a Mis Tareas →
+            Ir a Mis Tareas → 📋
           </Link>
         </div>
       ) : (
