@@ -19,6 +19,8 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onAgregarTarea }) => {
   return (
     <form onSubmit={handleSubmit} className="todo-form">
       <h3>Nueva Tarea</h3>
+      <label>Título de la tarea</label>
+
       <input
         type="text"
         placeholder="Título de la tarea"
@@ -26,6 +28,8 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onAgregarTarea }) => {
         onChange={(e) => setTitle(e.target.value)}
         required
       />
+
+      <label>Descripción</label>
       <textarea
         placeholder="Descripción (opcional)"
         value={description}

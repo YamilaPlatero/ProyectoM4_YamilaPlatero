@@ -8,6 +8,18 @@ export const App: React.FC = () => {
   const { user, logout } = useAuth();
   const location = useLocation();
 
+  const handleLogout = async () => {
+    const confirmar = window.confirm(
+      '¿Estás seguro de que deseas cerrar sesión?'
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    await logout();
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -44,7 +56,7 @@ export const App: React.FC = () => {
               <span className="user-email-badge" title={user.email || ''}>
                 {user.email}
               </span>
-              <button onClick={logout} className="btn-nav-logout">
+              <button onClick={handleLogout} className="btn-nav-logout">
                 Cerrar Sesión
               </button>
             </div>
