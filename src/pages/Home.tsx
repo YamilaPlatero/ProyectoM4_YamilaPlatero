@@ -42,8 +42,8 @@ export const Home: React.FC = () => {
       <section className="home-features">
         <div className="feature-card">
           <div className="feature-icon">📋</div>
-          <h3>Gestión de Tareas</h3>
-          <p>Crea, marca como completadas y organiza tus tareas en tiempo real con persistencia en Firebase.</p>
+          <h3>Tareas</h3>
+          <p>Crea, marca como completadas,elimina y organiza tus tareas.</p>
           <Link to="/tareas" className="feature-link">
             Ver Tareas →
           </Link>
@@ -51,8 +51,8 @@ export const Home: React.FC = () => {
 
         <div className="feature-card">
           <div className="feature-icon">✉️</div>
-          <h3>Contacto & Notificaciones</h3>
-          <p>Envía mensajes y consultas procesadas a través del servicio serverless integrado con AWS SES.</p>
+          <h3>Contacto </h3>
+          <p>Envía mensajes y consultas.</p>
           <Link to="/contacto" className="feature-link">
             Ir a Contacto →
           </Link>
