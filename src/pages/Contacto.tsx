@@ -56,7 +56,7 @@ export const Contacto: React.FC = () => {
       <header className="contacto-header">
         <h2>Contacto</h2>
         <p className="contacto-subtitle">
-          Envíanos tu consulta. El mensaje será procesado y enviado a través de AWS SES.
+          Envíanos tu consulta.
         </p>
       </header>
 
