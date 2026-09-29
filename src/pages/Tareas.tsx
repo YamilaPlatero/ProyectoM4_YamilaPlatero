@@ -3,19 +3,14 @@ import { useAuth, useTareas } from '../hooks';
 import { TodoForm, TodoList } from '../components';
 
 export const Tareas: React.FC = () => {
-  const { user, logout } = useAuth();
+  const { user, } = useAuth();
   const { tareas, loading, agregarTarea, toggleTarea, eliminarTarea } = useTareas(user?.uid);
 
   return (
     <div className="page-container tareas-page">
       <header className="tareas-header">
         <h2>Mis Tareas</h2>
-        <div className="user-profile">
-          <span>{user?.email}</span>
-          <button onClick={logout} className="btn-logout">
-            Cerrar Sesión
-          </button>
-        </div>
+
       </header>
 
       <main className="tareas-content">
