@@ -1,4 +1,3 @@
-// Mocks para servicios de Firebase Auth & Firestore
 
 export const mockUser = {
   uid: 'mock_uid_123',
@@ -10,10 +9,10 @@ export const mockAuth = {
   currentUser: mockUser,
   signInWithEmailAndPassword: async () => ({ user: mockUser }),
   createUserWithEmailAndPassword: async () => ({ user: mockUser }),
-  signOut: async () => {},
+  signOut: async () => { },
   onAuthStateChanged: (cb: (u: typeof mockUser | null) => void) => {
     cb(mockUser);
-    return () => {};
+    return () => { };
   },
 };
 
@@ -22,6 +21,6 @@ export const mockFirestore = {
   doc: () => ({}),
   getDocs: async () => ({ docs: [] }),
   addDoc: async () => ({ id: 'new_doc_id' }),
-  updateDoc: async () => {},
-  deleteDoc: async () => {},
+  updateDoc: async () => { },
+  deleteDoc: async () => { },
 };

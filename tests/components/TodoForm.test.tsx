@@ -1,5 +1,4 @@
-// Ejemplo de test para TodoForm (usando Vitest / Jest + React Testing Library)
-/*
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { TodoForm } from '../../src/components/TodoForm';
@@ -24,6 +23,5 @@ describe('TodoForm Component', () => {
     expect(handleAdd).toHaveBeenCalledWith('Comprar leche', '');
   });
 });
-*/
 
-export {};
+export { };
