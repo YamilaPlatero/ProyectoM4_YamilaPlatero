@@ -23,7 +23,7 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onAgregarTarea }) => {
 
       <input
         type="text"
-        placeholder="Título de la tarea"
+        placeholder="Ejemplo: Crear contenido del blog"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
@@ -31,7 +31,7 @@ export const TodoForm: React.FC<TodoFormProps> = ({ onAgregarTarea }) => {
 
       <label>Descripción</label>
       <textarea
-        placeholder="Descripción (opcional)"
+        placeholder="Ejemplo: Planificar post para el blog"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />

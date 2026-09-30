@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
           <p>
             Has iniciado sesión como <strong>{user.email}</strong>.
           </p>
-          <Link to="/tareas" className="btn-primary-link">
+          <Link to="/tareas" className="feature-link">
             Ir a Mis Tareas → 📋
           </Link>
         </div>
