@@ -464,3 +464,10 @@ button:disabled {
 .password-toggle:hover {
   background-color: transparent !important;
 }
+
+@media (max-width: 600px) {
+    .password-toggle {
+        width: auto;
+        right: 11%;
+    }
+}
