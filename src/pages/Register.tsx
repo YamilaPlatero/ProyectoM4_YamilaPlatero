@@ -56,50 +56,56 @@ export const Register: React.FC = () => {
     <div className="page-container auth-page">
       <h2>Crear Cuenta</h2>
       {error && <div className="alert-error">{error}</div>}
+
       <form onSubmit={handleSubmit} className="auth-form">
-        <input
-          type="email"
-          placeholder="Correo Electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type={showPassword ? "text" : "password"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Contraseña"
-        />
+  <input
+    type="email"
+    placeholder="Correo Electrónico"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    required
+  />
 
-        <button
-          type="button"
-          className="password-toggle"
-          onClick={() => setShowPassword(!showPassword)}
-          aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-        >
-          {showPassword ? "🙈" : "👁️"}
-        </button>
-        <input
-          type={showConfirmPassword ? "text" : "password"}
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirmar contraseña"
-        />
+  <div className="password-container">
+    <input
+      type={showPassword ? "text" : "password"}
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      placeholder="Contraseña"
+    />
+    <button
+      type="button"
+      className="password-toggle"
+      onClick={() => setShowPassword(!showPassword)}
+      aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+    >
+      {showPassword ? "🙈" : "👁️"}
+    </button>
+  </div>
 
-        <button
-          type="button"
-          className="password-toggle"
-          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          aria-label={
-            showConfirmPassword
-              ? "Ocultar confirmación de contraseña"
-              : "Mostrar confirmación de contraseña"
-          }
-        >
-          {showConfirmPassword ? "🙈" : "👁️"}
-        </button>
-        <button type="submit">Registrarse</button>
-      </form>
+  <div className="password-container">
+    <input
+      type={showConfirmPassword ? "text" : "password"}
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+      placeholder="Confirmar contraseña"
+    />
+    <button
+      type="button"
+      className="password-toggle"
+      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+      aria-label={
+        showConfirmPassword
+          ? "Ocultar confirmación de contraseña"
+          : "Mostrar confirmación de contraseña"
+      }
+    >
+      {showConfirmPassword ? "🙈" : "👁️"}
+    </button>
+  </div>
+
+  <button type="submit">Registrarse</button>
+</form>
       <p style={{ marginTop: '1rem', textAlign: 'center', color: 'var(--text-muted)' }}>
         ¿Ya tienes una cuenta?{' '}
         <Link

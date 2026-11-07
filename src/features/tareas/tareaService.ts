@@ -8,7 +8,7 @@ import {
   deleteDoc,
   doc,
   serverTimestamp,
-} from 'firebase/firestore';
+}from 'firebase/firestore';
 import { db } from '../../services/firebase';
 import type { Tarea } from '../../types';
 
@@ -48,6 +48,19 @@ export const tareaService = {
     const docRef = doc(db, COLLECTION_NAME, tareaId);
     await updateDoc(docRef, {
       completed,
+      updatedAt: Date.now(),
+    });
+  },
+
+  async editarTarea(
+    tareaId: string,
+    title: string,
+    description?: string
+  ): Promise<void> {
+    const docRef = doc(db, COLLECTION_NAME, tareaId);
+    await updateDoc(docRef, {
+      title,
+      description: description || '',
       updatedAt: Date.now(),
     });
   },

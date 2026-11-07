@@ -39,6 +39,15 @@ export const useTareas = (userId?: string) => {
     );
   };
 
+  const editarTarea = async (id: string, title: string, description?: string) => {
+    await tareaService.editarTarea(id, title, description);
+    setTareas((prev) =>
+      prev.map((t) =>
+        t.id === id ? { ...t, title, description: description || '' } : t
+      )
+    );
+  };
+
   const eliminarTarea = async (id: string) => {
     await tareaService.eliminarTarea(id);
     setTareas((prev) => prev.filter((t) => t.id !== id));
@@ -49,6 +58,7 @@ export const useTareas = (userId?: string) => {
     loading,
     agregarTarea,
     toggleTarea,
+    editarTarea,
     eliminarTarea,
   };
 };

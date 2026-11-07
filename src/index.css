@@ -1,3 +1,6 @@
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 :root {
   --primary: #6366f1;
   --primary-hover: #4f46e5;
@@ -14,6 +17,9 @@
   --danger-bg: rgba(239, 68, 68, 0.15);
 }
 
+/* =========================================================
+   RESET Y BASE (celular)
+   ========================================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,137 +31,14 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
-.app-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  width: 100%;
-}
-
-.app-header {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.brand-title {
-  text-decoration: none;
-  color: var(--text-main);
-}
-
-.brand-title h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #a5b4fc, #6366f1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.app-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1.25rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-}
-
-.nav-links,
-.nav-auth-links {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.nav-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-}
-
-.nav-link:hover {
-  color: var(--text-main);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.nav-link.active {
-  color: #fff;
-  background: var(--primary);
-}
-
-.nav-user-info {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.user-email-badge {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  max-width: 180px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.btn-nav-logout {
-  width: auto;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.85rem;
-  margin-bottom: 0;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-muted);
-}
-
-.btn-nav-logout:hover {
-  background: var(--danger);
-  border-color: var(--danger);
-  color: #fff;
-}
-
-.page-container {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.auth-page h2,
-.contacto-header h2,
-.home-hero h2,
-.tareas-header h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1%;
-  color: var(--text-main);
-}
-
-/* Forms & Inputs */
-.form-group {
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  margin-bottom: 0.35rem;
-}
-
+/* =========================================================
+   ELEMENTOS GLOBALES: inputs y botones
+   ========================================================= */
 input,
 textarea,
 button {
@@ -202,6 +85,143 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/* =========================================================
+   LAYOUT: contenedor, encabezado y navegación
+   ========================================================= */
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 0.75rem;
+  width: 100%;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.brand-title {
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.brand-title h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a5b4fc, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navegación: en celular se apila */
+.app-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+.nav-links,
+.nav-auth-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+  color: #fff;
+  background: var(--primary);
+}
+
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.user-email-badge {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-nav-logout {
+  width: auto;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+.btn-nav-logout:hover {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+}
+
+/* =========================================================
+   COMPONENTES COMPARTIDOS
+   ========================================================= */
+.page-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.auth-page h2,
+.contacto-header h2,
+.home-hero h2,
+.tareas-header h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+/* Formularios */
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+/* Botones de acción */
 .btn-delete {
   background: var(--danger);
   width: auto;
@@ -212,6 +232,15 @@ button:disabled {
 
 .btn-delete:hover {
   background: var(--danger-hover);
+}
+
+.btn-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 0.4rem 0.6rem;
+  margin-bottom: 0;
 }
 
 .btn-logout {
@@ -228,7 +257,7 @@ button:disabled {
   border-color: var(--danger);
 }
 
-/* Alerts */
+/* Alertas */
 .alert,
 .alert-error {
   padding: 0.75rem 1rem;
@@ -252,11 +281,13 @@ button:disabled {
   color: #fca5a5;
 }
 
-/* Home Page */
+/* =========================================================
+   PÁGINA: HOME
+   ========================================================= */
 .home-container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .home-hero {
@@ -266,14 +297,14 @@ button:disabled {
 .home-description {
   color: var(--text-muted);
   margin-top: 0.5rem;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .home-user-welcome,
 .home-auth-actions {
   text-align: center;
   background: #0f172a;
-  padding: 1.25rem;
+  padding: 1rem;
   border-radius: 10px;
   border: 1px solid var(--border-color);
 }
@@ -283,33 +314,17 @@ button:disabled {
   margin-bottom: 1rem;
 }
 
+/* Botones de home: en celular uno debajo del otro */
 .home-buttons-group {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.btn-primary-link {
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  padding: 0.65rem 1.25rem;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.2s ease;
-}
-
-.btn-primary-link:hover {
-  background: var(--primary-hover);
-}
-
+.btn-primary-link,
 .btn-secondary-link {
   display: inline-block;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
+  text-align: center;
   text-decoration: none;
   padding: 0.65rem 1.25rem;
   border-radius: 8px;
@@ -317,22 +332,38 @@ button:disabled {
   transition: all 0.2s ease;
 }
 
+.btn-primary-link {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary-link:hover {
+  background: var(--primary-hover);
+}
+
+.btn-secondary-link {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
 .btn-secondary-link:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--primary);
 }
 
+/* Tarjetas de features: en celular una columna */
 .home-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
 }
 
 .feature-card {
   background: #0f172a;
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s, border-color 0.2s;
@@ -373,7 +404,9 @@ button:disabled {
   text-decoration: underline;
 }
 
-/* Contacto Page */
+/* =========================================================
+   PÁGINA: CONTACTO
+   ========================================================= */
 .contacto-subtitle {
   color: var(--text-muted);
   margin-bottom: 1.5rem;
@@ -400,11 +433,16 @@ button:disabled {
   text-decoration: underline;
 }
 
-/* Tareas & Todo items */
+/* =========================================================
+   PÁGINA: TAREAS
+   ========================================================= */
+
+/* Encabezado: en celular se apila */
 .tareas-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--border-color);
@@ -416,18 +454,23 @@ button:disabled {
   gap: 1rem;
 }
 
+.todo-form h3 {
+  margin-bottom: 0.75rem;
+}
+
+/* Cada tarea: en celular la info va arriba y las acciones abajo */
 .todo-item {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.75rem;
   padding: 0.75rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .todo-info {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.75rem;
 }
 
 .todo-info input[type="checkbox"] {
@@ -436,38 +479,151 @@ button:disabled {
   cursor: pointer;
 }
 
-.todo-form {
-  h3 {
-    margin-bottom: 2%;
-  }
+.todo-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-/* Toggle Password*/
+.todo-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
 
+/* =========================================================
+   MOSTRAR/OCULTAR CONTRASEÑA
+   ========================================================= */
 .password-container {
   position: relative;
-  display: flex;
-  align-items: center;
+  margin-bottom: 1rem;
 }
 
+.password-container input {
+  margin-bottom: 0;
+  padding-right: 3rem; /* deja lugar para el ojito */
+}
 
 .password-toggle {
-  width: 10%;
   position: absolute;
-  right: 240px;
+  top: 50%;
+  right: 0.5rem;
+  width: auto;
+  margin-bottom: 0;
+  padding: 0.25rem 0.5rem;
   background: none;
   border: none;
-  cursor: pointer;
   font-size: 1.1rem;
+  line-height: 1;
+  transform: translateY(-50%);
 }
 
-.password-toggle:hover {
-  background-color: transparent !important;
+.password-toggle:hover,
+.password-toggle:active {
+  background: transparent;
+  transform: translateY(-50%);
 }
 
-@media (max-width: 600px) {
-    .password-toggle {
-        width: auto;
-        right: 11%;
-    }
+/* =========================================================
+   TABLET Y ESCRITORIO (desde 600px)
+   Solo se agregan o cambian las diferencias.
+   ========================================================= */
+@media (min-width: 600px) {
+  .app-container {
+    padding: 2rem 1rem;
+  }
+
+  .app-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .brand-title h1 {
+    font-size: 2rem;
+  }
+
+  .app-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .nav-links,
+  .nav-auth-links {
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+
+  .nav-user-info {
+    justify-content: flex-start;
+  }
+
+  .user-email-badge {
+    max-width: 180px;
+  }
+
+  .page-container {
+    padding: 2rem;
+  }
+
+  .auth-page h2,
+  .contacto-header h2,
+  .home-hero h2,
+  .tareas-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .home-container {
+    gap: 2rem;
+  }
+
+  .home-description {
+    font-size: 1.05rem;
+  }
+
+  .home-user-welcome,
+  .home-auth-actions {
+    padding: 1.25rem;
+  }
+
+  .home-buttons-group {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .home-features {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+  }
+
+  .tareas-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .todo-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .todo-info {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .todo-actions {
+    flex-shrink: 0;
+  }
 }

@@ -54,20 +54,23 @@ export const Login: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
-          type={showPassword ? "text" : "password"}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Contraseña"
-        />
 
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="password-toggle"
-        >
-          {showPassword ? "🙈" : "👁️"}
-        </button>
+        <div className="password-container">
+  <input
+    type={showPassword ? "text" : "password"}
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+    placeholder="Contraseña"
+  />
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    className="password-toggle"
+    aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+  >
+    {showPassword ? "🙈" : "👁️"}
+  </button>
+</div>
 
         <button type="submit">Ingresar</button>
       </form>
