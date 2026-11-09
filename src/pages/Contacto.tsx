@@ -18,15 +18,22 @@ export const Contacto: React.FC = () => {
     const mensaje = msj.trim();
     if (!user) return mensaje;
 
-    const pendientes = tareas;
-    const lista =
-      pendientes.length === 0
-        ? 'No hay tareas pendientes.'
-        : pendientes
-            .map((t) => `- ${t.title}${t.description ? `: ${t.description}` : ''}`)
-            .join('\n');
+    const formatear = (t: { title: string; description?: string }) =>
+      `- ${t.title}${t.description ? `: ${t.description}` : ''}`;
 
-    return `${mensaje}\n\nTareas pendientes:\n${lista}`;
+    const pendientes = tareas.filter((t) => !t.completed);
+    const completadas = tareas.filter((t) => t.completed);
+
+    const listaPendientes =
+      pendientes.length === 0 ? 'Ninguna.' : pendientes.map(formatear).join('\n');
+    const listaCompletadas =
+      completadas.length === 0 ? 'Ninguna.' : completadas.map(formatear).join('\n');
+
+    return (
+      `${mensaje}\n\n` +
+      `Tareas pendientes:\n${listaPendientes}\n\n` +
+      `Tareas completadas:\n${listaCompletadas}`
+    );
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
