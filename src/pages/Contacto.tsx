@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth, useTareas } from '../hooks';
 
 export const Contacto: React.FC = () => {
+  const { user } = useAuth();
+  const { tareas, loading: cargandoTareas } = useTareas(user?.uid);
+
   const [nombre, setNombre] = useState('');
   const [correo, setCorreo] = useState('');
   const [msj, setMsj] = useState('');
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  // Arma el mensaje final: lo que escribió la persona + sus tareas pendientes
+  const armarMensaje = () => {
+    const mensaje = msj.trim();
+    if (!user) return mensaje;
+
+    const pendientes = tareas;
+    const lista =
+      pendientes.length === 0
+        ? 'No hay tareas pendientes.'
+        : pendientes
+            .map((t) => `- ${t.title}${t.description ? `: ${t.description}` : ''}`)
+            .join('\n');
+
+    return `${mensaje}\n\nTareas pendientes:\n${lista}`;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +50,7 @@ export const Contacto: React.FC = () => {
         body: JSON.stringify({
           nombre: nombre.trim(),
           correo: correo.trim(),
-          msj: msj.trim(),
+          msj: armarMensaje(),
         }),
       });
 
@@ -112,7 +132,7 @@ export const Contacto: React.FC = () => {
           />
         </div>
 
-        <button type="submit" disabled={loading} className="btn-submit">
+        <button type="submit" disabled={loading || cargandoTareas} className="btn-submit">
           {loading ? 'Enviando correo...' : 'Enviar Mensaje ✉️'}
         </button>
       </form>
