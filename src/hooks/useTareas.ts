@@ -48,7 +48,16 @@ export const useTareas = (userId?: string) => {
     );
   };
 
+ 
   const eliminarTarea = async (id: string) => {
+    const confirmar = window.confirm(
+      '¿Estás seguro de que deseas cerrar sesión?'
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
     await tareaService.eliminarTarea(id);
     setTareas((prev) => prev.filter((t) => t.id !== id));
   };

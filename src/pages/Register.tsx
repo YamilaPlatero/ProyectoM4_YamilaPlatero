@@ -4,7 +4,7 @@ import { useAuth } from '../hooks';
 import { isValidEmail, isValidPassword } from '../utils';
 
 export const Register: React.FC = () => {
-  const { register, signInWithGoogle } = useAuth();
+  const { register } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,15 +13,7 @@ export const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleGoogleRegister = async () => {
-    try {
-      setError(null);
-      await signInWithGoogle();
-      navigate('/tareas');
-    } catch (err: any) {
-      setError(err.message || 'Error al registrarse con Google');
-    }
-  };
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,11 +110,7 @@ export const Register: React.FC = () => {
           Inicia sesión aquí
         </Link>
       </p>
-      <div>
-        <button type="button" onClick={handleGoogleRegister}>
-          Continuar con Google
-        </button>
-      </div>
+      
     </div>
   );
 };

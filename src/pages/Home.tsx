@@ -1,9 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
 
+
 export const Home: React.FC = () => {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+
+  
+
+  const handleGoogleRegister = async () => {
+      try {
+        setError(null);
+        await signInWithGoogle();
+        navigate('/tareas');
+      } catch (err: any) {
+        setError(err.message || 'Error al registrarse con Google');
+      }
+    };
 
   return (
     <div className="page-container home-container">
@@ -35,7 +50,17 @@ export const Home: React.FC = () => {
             <Link to="/register" className="btn-secondary-link">
               Registrarse
             </Link>
+            
           </div>
+          <p  onClick={handleGoogleRegister}
+          style={{
+            color: 'var(--primary)',
+            textDecoration: 'underline',
+            cursor: 'pointer',
+          }}           
+          >
+          Continuar con Google
+        </p>
         </div>
       )}
 
