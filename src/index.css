@@ -467,6 +467,10 @@ button:disabled {
   border-bottom: 1px solid var(--border-color);
 }
 
+.tareas-enviar {
+  margin-top: 1.25rem;
+}
+
 .user-profile {
   display: flex;
   align-items: center;
