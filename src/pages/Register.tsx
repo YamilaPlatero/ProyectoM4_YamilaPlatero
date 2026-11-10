@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import { isValidEmail, isValidPassword } from '../utils';
 
+// Quita cualquier espacio que se escriba o se pegue
+const sinEspacios = (valor: string) => valor.replace(/\s/g, '');
+
 export const Register: React.FC = () => {
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -52,7 +55,7 @@ export const Register: React.FC = () => {
           type="email"
           placeholder="Correo Electrónico"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(sinEspacios(e.target.value))}
           required
         />
 
@@ -60,8 +63,9 @@ export const Register: React.FC = () => {
           <input
             type={showPassword ? 'text' : 'password'}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(sinEspacios(e.target.value))}
             placeholder="Contraseña"
+            required
           />
           <button
             type="button"
@@ -77,8 +81,9 @@ export const Register: React.FC = () => {
           <input
             type={showConfirmPassword ? 'text' : 'password'}
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(sinEspacios(e.target.value))}
             placeholder="Confirmar contraseña"
+            required
           />
           <button
             type="button"

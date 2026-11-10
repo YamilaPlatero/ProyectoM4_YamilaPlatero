@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks';
 import { isValidEmail, isValidPassword } from '../utils';
 
+// Quita cualquier espacio que se escriba o se pegue
+const sinEspacios = (valor: string) => valor.replace(/\s/g, '');
+
 export const Login: React.FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -51,26 +54,27 @@ export const Login: React.FC = () => {
           type="email"
           placeholder="Correo Electrónico"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(sinEspacios(e.target.value))}
           required
         />
 
         <div className="password-container">
-  <input
-    type={showPassword ? "text" : "password"}
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    placeholder="Contraseña"
-  />
-  <button
-    type="button"
-    onClick={() => setShowPassword(!showPassword)}
-    className="password-toggle"
-    aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
-  >
-    {showPassword ? "🙈" : "👁️"}
-  </button>
-</div>
+          <input
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={(e) => setPassword(sinEspacios(e.target.value))}
+            placeholder="Contraseña"
+            required
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="password-toggle"
+            aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+          >
+            {showPassword ? '🙈' : '👁️'}
+          </button>
+        </div>
 
         <button type="submit">Ingresar</button>
       </form>
