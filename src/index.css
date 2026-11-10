@@ -433,6 +433,25 @@ button:disabled {
   text-decoration: underline;
 }
 
+.btn-google {
+  display: block;
+  width: auto;
+  margin: 1rem auto 0;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn-google:hover {
+  background: none;
+  color: var(--primary-hover);
+}
+
 /* =========================================================
    PÁGINA: TAREAS
    ========================================================= */

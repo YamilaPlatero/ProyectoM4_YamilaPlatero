@@ -5,7 +5,7 @@ import type { Tarea } from '../types';
 
 export const Tareas: React.FC = () => {
   const { user } = useAuth();
-  const { tareas, loading, agregarTarea, toggleTarea, eliminarTarea, editarTarea } =
+  const { tareas, loading, agregarTarea, eliminarTarea, editarTarea } =
     useTareas(user?.uid);
 
   const [tareaEditando, setTareaEditando] = useState<Tarea | null>(null);
@@ -36,7 +36,6 @@ export const Tareas: React.FC = () => {
         ) : (
           <TodoList
             tareas={tareas}
-            onToggle={toggleTarea}
             onDelete={eliminarTarea}
             onEdit={setTareaEditando}
           />
