@@ -61,7 +61,9 @@ textarea:focus {
 }
 
 textarea {
-  resize: vertical;
+  resize: none;
+  height: 7rem;
+  overflow-y: auto;
 }
 
 button {
