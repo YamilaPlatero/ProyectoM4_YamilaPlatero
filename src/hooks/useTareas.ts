@@ -51,7 +51,7 @@ export const useTareas = (userId?: string) => {
  
   const eliminarTarea = async (id: string) => {
     const confirmar = window.confirm(
-      '¿Estás seguro de que deseas cerrar sesión?'
+      '¿Estás seguro de que deseas borrar la tarea?'
     );
 
     if (!confirmar) {

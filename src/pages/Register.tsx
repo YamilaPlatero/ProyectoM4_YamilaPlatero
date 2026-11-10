@@ -13,8 +13,6 @@ export const Register: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isValidEmail(email)) {
@@ -50,54 +48,55 @@ export const Register: React.FC = () => {
       {error && <div className="alert-error">{error}</div>}
 
       <form onSubmit={handleSubmit} className="auth-form">
-  <input
-    type="email"
-    placeholder="Correo Electrónico"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-    required
-  />
+        <input
+          type="email"
+          placeholder="Correo Electrónico"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-  <div className="password-container">
-    <input
-      type={showPassword ? "text" : "password"}
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      placeholder="Contraseña"
-    />
-    <button
-      type="button"
-      className="password-toggle"
-      onClick={() => setShowPassword(!showPassword)}
-      aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-    >
-      {showPassword ? "🙈" : "👁️"}
-    </button>
-  </div>
+        <div className="password-container">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Contraseña"
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
+          >
+            {showPassword ? '🙈' : '👁️'}
+          </button>
+        </div>
 
-  <div className="password-container">
-    <input
-      type={showConfirmPassword ? "text" : "password"}
-      value={confirmPassword}
-      onChange={(e) => setConfirmPassword(e.target.value)}
-      placeholder="Confirmar contraseña"
-    />
-    <button
-      type="button"
-      className="password-toggle"
-      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-      aria-label={
-        showConfirmPassword
-          ? "Ocultar confirmación de contraseña"
-          : "Mostrar confirmación de contraseña"
-      }
-    >
-      {showConfirmPassword ? "🙈" : "👁️"}
-    </button>
-  </div>
+        <div className="password-container">
+          <input
+            type={showConfirmPassword ? 'text' : 'password'}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="Confirmar contraseña"
+          />
+          <button
+            type="button"
+            className="password-toggle"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            aria-label={
+              showConfirmPassword
+                ? 'Ocultar confirmación de contraseña'
+                : 'Mostrar confirmación de contraseña'
+            }
+          >
+            {showConfirmPassword ? '🙈' : '👁️'}
+          </button>
+        </div>
 
-  <button type="submit">Registrarse</button>
-</form>
+        <button type="submit">Registrarse</button>
+      </form>
+
       <p style={{ marginTop: '1rem', textAlign: 'center', color: 'var(--text-muted)' }}>
         ¿Ya tienes una cuenta?{' '}
         <Link
@@ -110,7 +109,6 @@ export const Register: React.FC = () => {
           Inicia sesión aquí
         </Link>
       </p>
-      
     </div>
   );
 };
