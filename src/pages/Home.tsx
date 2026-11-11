@@ -61,7 +61,7 @@ export const Home: React.FC = () => {
         <div className="feature-card">
           <div className="feature-icon">📋</div>
           <h3>Tareas</h3>
-          <p>Crea, marca como completadas, elimina y organiza tus tareas.</p>
+          <p>Crea,edita, marca como completadas, elimina y envia tu resumen de tareas.</p>
           <Link to="/tareas" className="feature-link">
             Ver Tareas →
           </Link>
