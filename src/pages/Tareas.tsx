@@ -5,7 +5,7 @@ import type { Tarea } from '../types';
 
 export const Tareas: React.FC = () => {
   const { user } = useAuth();
-  const { tareas, loading, agregarTarea, eliminarTarea, editarTarea } =
+  const { tareas, loading, agregarTarea, toggleTarea, eliminarTarea, editarTarea } =
     useTareas(user?.uid);
 
   const [tareaEditando, setTareaEditando] = useState<Tarea | null>(null);
@@ -29,9 +29,15 @@ export const Tareas: React.FC = () => {
     setErrorMail(null);
     setEnviando(true);
 
-    const lista = tareas
-      .map((t) => `- ${t.title}${t.description ? `: ${t.description}` : ''}`)
-      .join('\n');
+    const formatear = (t: Tarea) =>
+      `- ${t.title}${t.description ? `: ${t.description}` : ''}`;
+
+    const pendientes = tareas.filter((t) => !t.completed).map(formatear);
+    const completadas = tareas.filter((t) => t.completed).map(formatear);
+
+    const mensaje =
+      `Tareas pendientes:\n${pendientes.length ? pendientes.join('\n') : 'Ninguna.'}\n\n` +
+      `Tareas completadas:\n${completadas.length ? completadas.join('\n') : 'Ninguna.'}`;
 
     try {
       const response = await fetch('/api/send-email', {
@@ -40,16 +46,19 @@ export const Tareas: React.FC = () => {
         body: JSON.stringify({
           nombre: user.email,
           correo: user.email,
-          msj: `Tareas:\n${lista}`,
+          msj: mensaje,
         }),
       });
 
-      const data = await response.json();
+      const texto = await response.text();
+      const data = texto ? JSON.parse(texto) : {};
 
       if (response.ok && data.success) {
         setExitoMail('¡Tus tareas fueron enviadas por mail!');
       } else {
-        setErrorMail(data.error || 'No se pudo enviar el mail.');
+        setErrorMail(
+          data.error || `No se pudo enviar el mail (error ${response.status}).`
+        );
       }
     } catch (error: any) {
       setErrorMail(error.message || 'Error de conexión con el servicio de correo.');
@@ -75,6 +84,7 @@ export const Tareas: React.FC = () => {
         ) : (
           <TodoList
             tareas={tareas}
+            onToggle={toggleTarea}
             onDelete={eliminarTarea}
             onEdit={setTareaEditando}
           />
@@ -93,7 +103,7 @@ export const Tareas: React.FC = () => {
               </div>
             )}
             <button type="button" onClick={handleEnviarMail} disabled={enviando}>
-              {enviando ? 'Enviando...' : 'Enviar tareas por mail ✉️'}
+              {enviando ? 'Enviando...' : 'Enviar resumen ✉️'}
             </button>
           </div>
         )}

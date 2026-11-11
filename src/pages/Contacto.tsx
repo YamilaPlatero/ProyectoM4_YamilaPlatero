@@ -13,7 +13,7 @@ export const Contacto: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Arma el mensaje final: lo que escribió la persona + sus tareas pendientes
+  // Arma el mensaje final: lo que escribió la persona + sus tareas pendientes y completadas
   const armarMensaje = () => {
     const mensaje = msj.trim();
     if (!user) return mensaje;
@@ -21,18 +21,13 @@ export const Contacto: React.FC = () => {
     const formatear = (t: { title: string; description?: string }) =>
       `- ${t.title}${t.description ? `: ${t.description}` : ''}`;
 
-    const pendientes = tareas.filter((t) => !t.completed);
-    const completadas = tareas.filter((t) => t.completed);
-
-    const listaPendientes =
-      pendientes.length === 0 ? 'Ninguna.' : pendientes.map(formatear).join('\n');
-    const listaCompletadas =
-      completadas.length === 0 ? 'Ninguna.' : completadas.map(formatear).join('\n');
+    const pendientes = tareas.filter((t) => !t.completed).map(formatear);
+    const completadas = tareas.filter((t) => t.completed).map(formatear);
 
     return (
       `${mensaje}\n\n` +
-      `Tareas pendientes:\n${listaPendientes}\n\n` +
-      `Tareas completadas:\n${listaCompletadas}`
+      `Tareas pendientes:\n${pendientes.length ? pendientes.join('\n') : 'Ninguna.'}\n\n` +
+      `Tareas completadas:\n${completadas.length ? completadas.join('\n') : 'Ninguna.'}`
     );
   };
 
@@ -61,7 +56,8 @@ export const Contacto: React.FC = () => {
         }),
       });
 
-      const data = await response.json();
+      const texto = await response.text();
+      const data = texto ? JSON.parse(texto) : {};
 
       if (response.ok && data.success) {
         setSuccessMessage(data.message || '¡Tu mensaje ha sido enviado exitosamente!');
@@ -69,7 +65,9 @@ export const Contacto: React.FC = () => {
         setCorreo('');
         setMsj('');
       } else {
-        setErrorMessage(data.error || 'Ocurrió un error al intentar enviar el correo.');
+        setErrorMessage(
+          data.error || `Ocurrió un error al intentar enviar el correo (error ${response.status}).`
+        );
       }
     } catch (error: any) {
       setErrorMessage(error.message || 'Error de conexión con el servicio de correo.');
