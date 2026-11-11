@@ -8,7 +8,7 @@ describe('TodoForm Component', () => {
     const handleAdd = vi.fn();
     render(<TodoForm onAgregarTarea={handleAdd} />);
 
-    expect(screen.getByPlaceholderText(/Título de la tarea/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Ejemplo: Crear contenido del blog/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Agregar Tarea/i })).toBeInTheDocument();
   });
 
@@ -16,7 +16,7 @@ describe('TodoForm Component', () => {
     const handleAdd = vi.fn();
     render(<TodoForm onAgregarTarea={handleAdd} />);
 
-    const input = screen.getByPlaceholderText(/Título de la tarea/i);
+    const input = screen.getByPlaceholderText(/Ejemplo: Crear contenido del blog/i);
     fireEvent.change(input, { target: { value: 'Comprar leche' } });
     fireEvent.click(screen.getByRole('button', { name: /Agregar Tarea/i }));
 
