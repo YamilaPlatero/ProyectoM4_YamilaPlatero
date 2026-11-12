@@ -182,4 +182,6 @@ El proyecto está configurado para desplegarse fácilmente en **Vercel**
 
 ## 👩‍💻 Autor
 
+Drive sobre mi trabajo: https://docs.google.com/document/d/1_SelP9bvLd9A37bu2SYX3B4FrbNqPm3v2tIyjaylIUk/edit?usp=sharing
+
 - **Yamila Platero** - *Proyecto Individual M4 (PI4)  Full Stack*
